@@ -1783,7 +1783,9 @@ ul.icons {
 /* Wrapper */
 .wrapper {
   padding: 8rem 0 6rem 0 ;
-  position: relative;
+  /* position: relative; */
+  align-items: center;
+  align-content: center;
   z-index: 1; }
   @media screen and (max-width: 1280px) {
     .wrapper {
@@ -1794,7 +1796,37 @@ ul.icons {
   @media screen and (max-width: 480px) {
     .wrapper {
       padding: 2rem 0 0.1rem 0 ; } }
-
+  
+ #vista{
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  background-color: #111111;
+  color: rgba(255, 255, 255, 0.5);
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  background-image: url("../img/LogoUTM.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top: 0;
+  display: -ms-flexbox;
+  height: 35rem !important;
+  min-height: 35rem;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%; }
+      
 /* Banner */
 #banner {
   -ms-flex-align: center;
@@ -1813,7 +1845,7 @@ ul.icons {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  background-image: url("../../images/banner.jpg");
+  background-image: url("../img/LogoUTM.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1828,7 +1860,7 @@ ul.icons {
   #banner input, #banner select, #banner textarea {
     color: #ffffff; }
   #banner a {
-    color: #ce1b28; }
+    color: #ffffff; }
   #banner strong, #banner b {
     color: #ffffff; }
   #banner h1, #banner h2, #banner h3, #banner h4, #banner h5, #banner h6 {
@@ -1853,8 +1885,8 @@ ul.icons {
     #banner input[type="button"]:hover,
     #banner button:hover,
     #banner .button:hover {
-      box-shadow: inset 0 0 0 1px #ce1b28;
-      color: #ce1b28 !important; }
+      box-shadow: inset 0 0 0 1px #ffffff;
+      color: #ffffff !important; }
       #banner input[type="submit"]:hover:active,
       #banner input[type="reset"]:hover:active,
       #banner input[type="button"]:hover:active,
@@ -1867,21 +1899,21 @@ ul.icons {
     #banner button.primary,
     #banner .button.primary {
       box-shadow: none;
-      background-color: #ce1b28;
+      background-color: #ffffff;
       color: #ffffff !important; }
       #banner input[type="submit"].primary:hover,
       #banner input[type="reset"].primary:hover,
       #banner input[type="button"].primary:hover,
       #banner button.primary:hover,
       #banner .button.primary:hover {
-        background-color: #e2212f;
+        background-color: #ffffff;
         box-shadow: none; }
         #banner input[type="submit"].primary:hover:active,
         #banner input[type="reset"].primary:hover:active,
         #banner input[type="button"].primary:hover:active,
         #banner button.primary:hover:active,
         #banner .button.primary:hover:active {
-          background-color: #b71824; }
+          background-color: #ffffff; }
   #banner label {
     color: #ffffff; }
   #banner input[type="text"],
@@ -1902,10 +1934,10 @@ ul.icons {
     #banner input[type="url"]:focus,
     #banner select:focus,
     #banner textarea:focus {
-      border-color: #ce1b28;
-      box-shadow: 0 0 0 1px #ce1b28; }
+      border-color: #ffffff;
+      box-shadow: 0 0 0 1px #ffffff; }
   #banner select {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='rgba(255, 255, 255, 0.25)' /%3E%3C/svg%3E"); }
+    background-image: url("../img/LogoUTM.jpg"); }
     #banner select option {
       color: rgba(255, 255, 255, 0.5);
       background-color: #111111; }
@@ -1918,13 +1950,13 @@ ul.icons {
       border-color: rgba(255, 255, 255, 0.25); }
   #banner input[type="checkbox"]:checked + label:before,
   #banner input[type="radio"]:checked + label:before {
-    background-color: #ce1b28;
-    border-color: #ce1b28;
+    background-color: #ffffff;
+    border-color: #ffffff;
     color: #ffffff; }
   #banner input[type="checkbox"]:focus + label:before,
   #banner input[type="radio"]:focus + label:before {
-    border-color: #ce1b28;
-    box-shadow: 0 0 0 1px #ce1b28; }
+    border-color: #ffffff;
+    box-shadow: 0 0 0 1px #ffffff; }
   #banner ::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.4) !important; }
   #banner :-moz-placeholder {
@@ -1954,7 +1986,7 @@ ul.icons {
     background: #111111;
     box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.025); }
     #banner .testimonials .content .credit strong {
-      color: #ce1b28; }
+      color: #ffffff ; }
   #banner > .inner {
     -moz-transform: scale(1.0);
     -webkit-transform: scale(1.0);
@@ -2406,7 +2438,23 @@ body {
     height: 100%;
     z-index: -1;
     opacity: 0.05; }
-
+    .card {
+      /* Add shadows to create the "card" effect */
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      align-content: center;
+      align-items: center;
+    }
+    
+    /* On mouse-over, add a deeper shadow */
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    
+    /* Add some padding inside the card container */
+    .container {
+      padding: 2px 16px;
+    }
 #header {
   -moz-align-items: center;
   -webkit-align-items: center;
@@ -2420,7 +2468,7 @@ body {
   -webkit-justify-content: space-between;
   -ms-justify-content: space-between;
   justify-content: space-between;
-  background: #111111;
+  background: #BFBC3D ;
   color: rgba(255, 255, 255, 0.5);
   cursor: default;
   height: 3.25rem;
@@ -2822,3 +2870,5 @@ body.is-menu-visible #menu {
   transform: translateX(0);
   box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
   visibility: visible; }
+
+  

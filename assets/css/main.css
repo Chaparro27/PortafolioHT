@@ -2445,6 +2445,16 @@ body {
       align-content: center;
       align-items: center;
     }
+    .relativo {
+      display: table;
+ height: 100%;
+ width: 100%;
+    }
+    .cuerp{display: table-row;}
+    .centrado {
+      display: table-cell;
+ vertical-align: middle;;
+    }
     
     /* On mouse-over, add a deeper shadow */
     .card:hover {

@@ -6065,7 +6065,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #bd5d38 !important;
+  background-color: #652502 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -10011,7 +10011,7 @@ p.lead {
   text-transform: uppercase;
 }
 #sideNav .navbar-toggler:focus {
-  outline-color: #d48a6e;
+  outline-color: #652502;
 }
 
 @media (min-width: 992px) {
@@ -10024,6 +10024,7 @@ p.lead {
     flex-direction: column;
     width: 17rem;
     height: 100vh;
+    
   }
   #sideNav .navbar-brand {
     display: flex;

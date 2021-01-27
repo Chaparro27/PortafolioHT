@@ -1,0 +1,42 @@
+.CardCenter{
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.banner-container{
+  width: 100%;
+  height: 500px;
+  background-image: url('https://content.halocdn.com/media/Default/games/halo-5-guardians/page/h5-guardians-facebook-1200x630-ba103624b3f34af79fe8cb2d340dce3f.jpg');
+  background-repeat: round;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-title{
+  color: white;
+}
+
+.btn-brgs{
+  border: 0;
+  background: none;
+  border-radius: 12px;
+  background-color: lime;
+  transition: all 0.5s;
+  outline: none;
+}
+
+.btn-brgs:hover{
+  transform: scale(1.1);
+  background-color: yellowgreen;
+}
+
+.btn-brgs:active{
+  transform: scale(0.8);
+  background-color: sandybrown;
+}
+
+
+

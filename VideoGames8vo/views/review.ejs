@@ -1,15 +1,17 @@
 <%- include layouts/header.ejs%>
       <div class="container">
       <h1 class="row	justify-content-center">TOP MEJORES JUEGOS</h1>
-      <% games.map(game=>{%>
+
+
+      <% games.forEach(game=>{%>
       
       <div class="row	justify-content-center">
       <div class="card mb-3" style="max-width: 600px;">
           <div class="row g-0">
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title"><%= game.name %></h5>
-                <p class="card-text"><%= game.description %></p>
+                <h5 class="card-title"><%= game.titulo %></h5>
+                <p class="card-text"><%= game.descripcion %></p>
               </div>
             </div>
             <div class="col-md-4">
@@ -18,6 +20,8 @@
           </div>        
       </div>
       </div>
+
       <% })%>
+      
       </div>
 <%- include layouts/footer.ejs%>

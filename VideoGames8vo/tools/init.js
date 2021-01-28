@@ -1,14 +1,13 @@
 const admin = require("firebase-admin");
-
-const serviceAccount = require("./service.json");
+var serviceAccount = require("../tools/pruebag-220b6-firebase-adminsdk-g3auo-e88a98993b.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://videogames-3b283-default-rtdb.firebaseio.com"
+  databaseURL: "https://pruebag-220b6-default-rtdb.firebaseio.com/"
 });
 
 const db = admin.firestore();
-const storage = admin.storage();
+const storage = admin.storage().bucket('images');
 const auth = admin.auth();
 
 

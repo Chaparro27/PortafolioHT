@@ -1,41 +1,117 @@
 var express = require('express');
 var router = express.Router();
-const games = [
-  {
-    id:1,
-    name:"League of leyends",
-    description:"partidas minimas de 2 horas",
-    image:"https://elandroidelibre.elespanol.com/wp-content/uploads/2019/05/League-of-Legends-destacada.jpg"
-  },{
-    id:2,
-    name:"League of leyends 2",
-    description:"partidas minimas de 2 horas",
-    image:"https://elandroidelibre.elespanol.com/wp-content/uploads/2019/05/League-of-Legends-destacada.jpg"
-  }
-]
 
-const newgame = require('../db/new-game')
+const {auth, storage, db} = require('../tools/init');
+// const upL = require('../public/javascripts/auth')
+// const games = []
 
-/* GET home page.(index.ejs) */
+const newgame = require('../db/new-game');
+const { response } = require('express');
+
+// RUTAS
 router.get('/', function(req, res, next) {
   newgame.newGame()
   res.render('index', { title: 'Express' });
 });
-// RUTAS
-/* GET home page.(review.ejs) */
-router.get('/review', function(req, res, next) {
-  res.render('review', { title: 'TOP MEJOR RAITING', games:games });
+
+router.get('/review', async (req, res) =>{
+    const games = await (await db.collection('Juegos').get()).docs.map(doc => ({id: doc.id, ...doc.data()}))
+    console.log(games)
+    res.render('review', {games: games});
+    // db.ref('Juegos').once('value', (snapshot) => {ya estaxd es que estoy probando unas sentencias okXD
+    // games = snapshot.docs;
+    // res.render('review', {games:games})
 });
 
-router.get('/juegos', function(req, res, next) {
-  res.render('juegos', { title: 'TOP MEJOR RAITING', games:games});
+router.get('/juegos', async (req, res) => {
+  const games = await (await db.collection('Juegos').get()).docs.map(doc => ({id: doc.id, ...doc.data()}))
+  console.log(games)
+  res.render('juegos', {games: games});
+});
+router.get('/admin', async (req, res) => {
+  const games = await (await db.collection('Juegos').where("status", "==", false).get()).docs.map(doc => ({id: doc.id, ...doc.data()}))
+  res.render('admin', {games: games});
+});
+
+router.get('/home', function(req, res, next) {
+  res.render('home', { title: 'home'});
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'TOP MEJOR RAITING', games:games});
+  res.render('login', { title: 'Login'});
 });
-router.get('/home', function(req, res, next) {
-  res.render('home', { title: 'TOP MEJOR RAITING', games:games});
+
+router.get('/buscar', async (req, res) => {
+  const games = await (await db.collection('Juegos').get()).docs.map(doc => ({id: doc.id, ...doc.data()}))
+  
+  res.render('buscar', {games: games});
 });
+
+//Login
+router.post("/login", async (req, res) => {
+  const result = auth
+                  .sig
+});
+
+
+// REGISTRAR NUEVO JUEGO
+router.post('/upGame', async (req, res)=>{
+  try{
+    // const uploaded = await storage.upload();
+    // const url = uploaded[0].publicUrl()
+    // const dir = ""
+    // const ref = firebase.storage().ref()
+    // const file = document.querySelector(req.body.img).files[0]
+    // const name= new Date() + '-' + file.name
+    // const metadata ={
+    //     contentType:file.type
+    // }
+    // const task = ref.child(name).put(file,metadata)
+    // task 
+    // .then(
+    //     snapshot=> snapshot.ref.getDowloadURL()
+    // )
+    // .then( url=>{
+    //     console.log(url)
+    //     alert("Carga exitosa, status Ok")
+    // }
+    // )
+
+    const newGame={
+      titulo: req.body.titulo,
+      descripcion: req.body.descripcion,
+      img: req.body.img,
+      status: false,
+      calificacion:2
+    }
+    console.log(newGame)
+    const res = await db.collection('Juegos').doc().set(newGame);
+    // // res.status(201).send(`Created a new user: ${newGame.id}`);
+    console.log(res)
+    // res.status(200).send(result);
+  }catch(e){
+    res.status(500).send(e)
+  }
+
+})
+
+router.put('/update', async (req, res) => {
+  try{
+    const id= req.body.id
+    const juegosRef = db.collection('Juegos').doc(id)
+    const resp = await juegosRef.update({status: true})
+    console.log(resp)
+    // ({
+    //   "status": true
+    // }, {merge: true});
+    res.render('admin', {games: games});
+  }catch(e){
+    res.send(e)
+  }
+})
+//OBTENER LISTA DE JUEGOS
+
+//REGISTRAR NUEVO USUARIO
+
 
 module.exports = router;

@@ -1,0 +1,28 @@
+ <%- include layouts/header.ejs%>
+<br/>
+    <div class="container">
+          <div class="row	justify-content-center"  >
+            <form style="max-width: 600px;" class="d-flex" id="busqueda" >
+                <input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit" >Search</button>
+              </form>
+          </div>
+          <br/>
+          
+      
+      
+      </div>
+
+
+<script>
+const buscar = document.querySelector('#search');
+
+      document.body.innerHTML = " <% games.forEach(function(game){if(game.titulo.includes(" + "buscar.value"+")){%> <%- include layouts/Cgame.ejs%> <%} })%> "
+
+    </script>
+
+      
+
+      
+
+<%- include layouts/footer.ejs%>

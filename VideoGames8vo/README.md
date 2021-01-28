@@ -1,0 +1,1 @@
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\Bryan\Desktop\PortafolioHT\VideoGames8vo\tools\pruebag-220b6-firebase-adminsdk-g3auo-e88a98993b.json"

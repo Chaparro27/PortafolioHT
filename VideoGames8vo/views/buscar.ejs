@@ -6,9 +6,11 @@
                 <input class="form-control me-2" type="text" id="formulario">
                 <button  id="boton"class="btn btn-outline-success" >Buscar</button>
             </div>
-            <div id="resultado">
-                
-            </div>
+              <div id="resultado">
+
+              </div>
+
+
           </div> 
       </div>
 
@@ -27,12 +29,6 @@
       const btn= document.querySelector('#boton')
       const resultado = document.querySelector('#resultado')
       const games = JSON.parse(localStorage.getItem('games'));
-
-      // const games =[{
-      //   titulo:'Asincrono'
-      // },{titulo:'Pelon'}]
-
-      
       //
       resultado.innerHTML = '';
       const filtrar=()=>{
@@ -53,6 +49,7 @@
                   <div class="row g-0">
                     <div class="col-md-8">
                       <div class="card-body">
+                        <input type="hidden" name="ids" value=${game.id} >
                         <h5 class="card-title">${game.titulo}</h5>
                         <p class="card-text">${game.descripcion}</p>
                       </div>
@@ -69,8 +66,6 @@
         if(resultado.innerHTML===''){
           resultado.innerHTML += ` 
             <li>No encontrado</li>
-           
-
             `
         }
       }
@@ -79,5 +74,6 @@
       filtrar();
       // formulario.addEventListener('keyup', filtrar)
     </script>
+
 
 <%- include layouts/footer.ejs%>

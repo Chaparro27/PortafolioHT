@@ -5,16 +5,14 @@
     <h1 style="text-align: center;">GAME CENTER</h1>
   </div>
   <div class="banner-container" >
-    
+
     <button  type="button" class="btn btn-primary btn-brgs"  data-toggle="modal" data-target="#myModal">
       Agregar Nuevo Juego
     </button>
-  </div>
-  <div class="Centerbtn" >
     
-      
-    </div>
-      
+  </div>
+  <div class="Centerbtn" >     
+    </div>    
       <div class="modal" id="myModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -28,7 +26,7 @@
                 <div class="mb-3">
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Selecciona la imagen del juego</label>
-                    <input id="img" class="form-control" type="file" id="formFile">
+                    <input class="form-control" type="file" id="files" name="files"">
                   </div>
                 </div>
                   <div class="mb-3">
@@ -41,7 +39,7 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Agregar</button>
+                  <button type="buton"  class="btn btn-primary">Agregar</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
               </form>
@@ -52,25 +50,25 @@
   </div>
 </div>
   <script>
+          const file = document.getElementById('files');
           const newGame = document.querySelector('#newGame');
-          const img = document.querySelector('#img');
           const titulo = document.querySelector('#titulo');
           const descripcion =  document.querySelector('#descripcion');
-          newGame.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // const data={
-            //   nombre: titulo.value, descripcion: descripcion.value, img:img.value, status: false 
-            // }
+          const imagenURL = JSON.parse(localStorage.getItem('imagen'));
+          newGame.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            console.log()
             axios.post('/upGame', {
-              titulo: titulo.value, descripcion: descripcion.value, img:img.value, status: false 
-            } )
+              titulo: titulo.value, descripcion: descripcion.value, img:imagenURL, status: false 
+             } )
         .then(res => {
           console.log(res)
         })
         .catch(e => {
           console.log(e)
         });
-          }) 
+      })
   </script>
+
   
 <%- include layouts/footer.ejs%>

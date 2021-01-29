@@ -1,4 +1,5 @@
-const firebase = require('firebase')
+const firebase = require('firebase');
+const { firestore } = require('firebase-admin');
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyDf3TCZi7IQ4GQKOnfA9k2HNQ_njAH-w3I",
@@ -10,7 +11,7 @@ const firebase = require('firebase')
     appId: "1:693624137151:web:c676f73ce9ee620499ad0a"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  firestore
 
 //   function Login(email, password){
 //       firebase.auth().signInWithEmailAndPassword(email, password)

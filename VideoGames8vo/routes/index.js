@@ -7,6 +7,7 @@ const {auth, storage, db} = require('../tools/init');
 
 const newgame = require('../db/new-game');
 const { response } = require('express');
+const { firestore } = require('firebase-admin');
 const array =[]
 // RUTAS
 router.get('/', function(req, res, next) {
@@ -58,37 +59,15 @@ router.get('/buscarJuego', async (req, res) => {
 
 
 //Login
-router.post("/login", async (req, res) => {
-  const result = auth
-                  .sig
-});
+
 
 
 // REGISTRAR NUEVO JUEGO
+
+
+
 router.post('/upGame', async (req, res)=>{
   try{
-    // const uploaded = await storage.upload();
-    // const url = uploaded[0].publicUrl()
-    // const dir = ""
-    //const urlI =""
-    // const ref = firebase.storage().ref()
-    // const file = req.body.img
-    // const name= new Date() + '-' + file.name
-    // const metadata ={
-    //     contentType:file.type
-    // }
-    // const task = ref.child(name).put(file,metadata)
-    // task 
-    // .then(
-    //     snapshot=> snapshot.ref.getDowloadURL()
-    // )
-    // .then( url=>{
-    //     console.log(url)
-    //     urlI=url
-    //     alert("Carga exitosa, status Ok")
-    // }
-    // )
-
     const newGame={
       titulo: req.body.titulo,
       descripcion: req.body.descripcion,
@@ -100,7 +79,7 @@ router.post('/upGame', async (req, res)=>{
     const res = await db.collection('Juegos').doc().set(newGame);
     // // res.status(201).send(`Created a new user: ${newGame.id}`);
     console.log(res)
-    // res.status(200).send(result);
+    res.status(200).send(result);
   }catch(e){
     res.status(500).send(e)
   }

@@ -7,7 +7,7 @@ const {auth, storage, db} = require('../tools/init');
 
 const newgame = require('../db/new-game');
 const { response } = require('express');
-
+const array =[]
 // RUTAS
 router.get('/', function(req, res, next) {
   newgame.newGame()
@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/review', async (req, res) =>{
-    const games = await (await db.collection('Juegos').get()).docs.map(doc => ({id: doc.id, ...doc.data()}))
+    const games = await (await db.collection('Juegos').orderBy('calificacion', 'desc').get()).docs.map(doc => ({id: doc.id, ...doc.data()}))
     console.log(games)
     res.render('review', {games: games});
     // db.ref('Juegos').once('value', (snapshot) => {ya estaxd es que estoy probando unas sentencias okXD
@@ -40,12 +40,22 @@ router.get('/home', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Login'});
 });
-
-router.get('/buscar', async (req, res) => {
-  const games = await (await db.collection('Juegos').get()).docs.map(doc => ({id: doc.id, ...doc.data()}))
-  
-  res.render('buscar', {games: games});
+router.get('/buscar', function(req, res, next) {
+  res.render('buscar', { title: 'buscar'});
 });
+
+//Peticiones
+
+router.get('/buscarJuego', async (req, res) => {
+  try{
+    const games = await (await db.collection('Juegos').get()).docs.map(doc => ({id: doc.id, ...doc.data()}))
+    res.send({games: games});
+  }catch(e){
+    res.status(500).send(e)
+  }
+});
+
+
 
 //Login
 router.post("/login", async (req, res) => {
@@ -60,8 +70,9 @@ router.post('/upGame', async (req, res)=>{
     // const uploaded = await storage.upload();
     // const url = uploaded[0].publicUrl()
     // const dir = ""
+    //const urlI =""
     // const ref = firebase.storage().ref()
-    // const file = document.querySelector(req.body.img).files[0]
+    // const file = req.body.img
     // const name= new Date() + '-' + file.name
     // const metadata ={
     //     contentType:file.type
@@ -73,6 +84,7 @@ router.post('/upGame', async (req, res)=>{
     // )
     // .then( url=>{
     //     console.log(url)
+    //     urlI=url
     //     alert("Carga exitosa, status Ok")
     // }
     // )
@@ -82,7 +94,7 @@ router.post('/upGame', async (req, res)=>{
       descripcion: req.body.descripcion,
       img: req.body.img,
       status: false,
-      calificacion:2
+      calificacion:8
     }
     console.log(newGame)
     const res = await db.collection('Juegos').doc().set(newGame);
@@ -95,7 +107,7 @@ router.post('/upGame', async (req, res)=>{
 
 })
 
-router.put('/update', async (req, res) => {
+router.post('/admin', async (req, res) => {
   try{
     const id= req.body.id
     const juegosRef = db.collection('Juegos').doc(id)

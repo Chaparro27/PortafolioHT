@@ -3,7 +3,12 @@
 /* BASIC */
 
 html {
-  background-color: #2b9755;
+  background-image: url("https://i.insider.com/5b2bccf71ae66245008b5710?width=1100&format=jpeg&auto=webp");
+  width:"1100" ;
+  height:"550";
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }
 
 body {
@@ -12,7 +17,7 @@ body {
 }
 
 a {
-  color: #92badd;
+  color: #478903;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
@@ -58,7 +63,7 @@ h2 {
 
 #formFooter {
   background-color: #f6f6f6;
-  border-top: 1px solid #dce8f1;
+  border-top: 1px solid #478903;
   padding: 25px;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
@@ -83,7 +88,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #478903;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -105,7 +110,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #478903;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -139,7 +144,7 @@ input[type=text] {
 
 input[type=text]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #478903;
 }
 
 input[type=text]:placeholder {
@@ -169,7 +174,7 @@ input[type=password] {
 input[type=password]:focus {
   font-family: caption;
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #478903;
 }
 
 input[type=password]:placeholder {
@@ -268,7 +273,7 @@ input[type=password]:placeholder {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #56baed;
+  background-color: #478903;
   content: "";
   transition: width 0.2s;
 }

@@ -23,14 +23,14 @@
   border: 0;
   background: none;
   border-radius: 12px;
-  background-color: lime;
+  background-color: #478903;
   transition: all 0.5s;
   outline: none;
 }
 
 .btn-brgs:hover{
   transform: scale(1.1);
-  background-color: yellowgreen;
+  background-color: #478903;
 }
 
 .btn-brgs:active{

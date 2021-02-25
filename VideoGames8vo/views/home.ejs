@@ -1,0 +1,73 @@
+<%- include layouts/header.ejs%>
+
+<div class="container">
+  <div class="row	justify-content-center" >
+    <h1 style="text-align: center;">GAME CENTER</h1>
+  </div>
+  <div class="banner-container" >
+
+    <button  type="button" class="btn btn-primary btn-brgs"  data-toggle="modal" data-target="#myModal">
+      Agregar Nuevo Juego
+    </button>
+    
+  </div>
+  <div class="Centerbtn" >     
+    </div>    
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h4 class="modal-title">Nuevo Juego</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>            
+            <div class="modal-body">
+              <form  id="newGame">
+                <div class="mb-3">
+                  <div class="mb-3">
+                    <label  class="form-label">Selecciona la imagen del juego</label>
+                    <input type="file">
+                  </div>
+                </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Titulo del juego</label>
+                    <input type="text" class="form-control" id="titulo" placeholder="Titulo">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit"  class="btn btn-primary">Agregar</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</div>
+  <script>
+          // const file = document.getElementById('files');
+          const newGame = document.querySelector('#newGame');
+          const titulo = document.querySelector('#titulo');
+          const descripcion =  document.querySelector('#descripcion');
+          const imagenURL = JSON.parse(localStorage.getItem('imagen'));
+          newGame.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            axios.post('/upGame', {
+              titulo: titulo.value, descripcion: descripcion.value, img:imagenURL, status: false 
+             } )
+        .then(res => {
+          console.log(res)
+        })
+        .catch(e => {
+          console.log(e)
+        });
+      })
+  </script>
+
+  
+<%- include layouts/footer.ejs%>

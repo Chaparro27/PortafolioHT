@@ -1,0 +1,79 @@
+ <%- include layouts/header.ejs%>
+<br/>
+    <div class="container">
+          <div class="row	justify-content-center"  >
+            <div style="max-width: 600px;" class="d-flex">
+                <input class="form-control me-2" type="text" id="formulario">
+                <button  id="boton"class="btn btn-outline-success" >Buscar</button>
+            </div>
+              <div id="resultado">
+
+              </div>
+
+
+          </div> 
+      </div>
+
+<script>
+        const recuperar = async ()=>{
+        const resp = await axios.get('/buscarJuego')
+        localStorage.setItem("games", JSON.stringify(resp.data.games));
+        console.log(resp.data.games, 'datos')   
+      }
+      recuperar();
+</script>
+<script>
+
+      //Busqueda
+      const formulario = document.querySelector('#formulario');
+      const btn= document.querySelector('#boton')
+      const resultado = document.querySelector('#resultado')
+      const games = JSON.parse(localStorage.getItem('games'));
+      //
+      resultado.innerHTML = '';
+      const filtrar=()=>{
+
+        console.log(games.value, 'tienes')
+        resultado.innerHTML=''
+        const texto=formulario.value.toLowerCase()
+
+        for(let game of games ){
+
+          let titulo = game.titulo.toLowerCase();
+
+          if(titulo.indexOf(texto) !== -1){
+
+              resultado.innerHTML+=`
+              <div class="row	justify-content-center">
+              <div class="card mb-3" style="max-width: 600px;">
+                  <div class="row g-0">
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <input type="hidden" name="ids" value=${game.id} >
+                        <h5 class="card-title">${game.titulo}</h5>
+                        <p class="card-text">${game.descripcion}</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <img src="https://elandroidelibre.elespanol.com/wp-content/uploads/2019/05/League-of-Legends-destacada.jpg" alt="Cinque Terre" style="max-width: 250px;">
+                    </div>
+                  </div>        
+              </div>
+              </div>
+              `
+          }
+        }
+        if(resultado.innerHTML===''){
+          resultado.innerHTML += ` 
+            <li>No encontrado</li>
+            `
+        }
+      }
+      btn.addEventListener('click', filtrar)
+      formulario.addEventListener('keyup', filtrar)
+      filtrar();
+      // formulario.addEventListener('keyup', filtrar)
+    </script>
+
+
+<%- include layouts/footer.ejs%>

@@ -1,0 +1,16 @@
+{
+    "data": [
+        {
+            "imagen": "./bienvenido.jpg",
+            "descripcion": "Bienvenido a esta pagina donde puede ver nuestros productos"
+        },
+        {
+            "imagen": "./producto.jpg",
+            "descripcion": "Los productos que manejamos son de los mas conocido y mas solictados en el mercado"
+        },
+        {
+            "imagen": "./mision.jpg",
+            "descripcion": ""
+        }
+    ]
+}
